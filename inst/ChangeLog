@@ -1,3 +1,9 @@
+wskm (1.4.11) unstable; urgency=low
+
+  * Support initialising ewkm, fgkm, twkm with initial centers, much like kmeans
+
+  * Change the name of argument for the number of clusters from "k" to "centers"
+
 wskm (1.4.7) unstable; urgency=low
 
   * Fix bug: src/ewkm.c:288: runtime error: value 1.79769e+308 is
