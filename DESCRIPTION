@@ -1,6 +1,6 @@
 Package: wskm
-Version: 1.4.11
-Date: 2014-07-31
+Version: 1.4.19
+Date: 2014-12-26
 Title: Weighted k-means Clustering
 Authors@R: c(person("Graham", "Williams", email="graham.williams@togaware.com", role="aut"),
 	person("Joshua Z", "Huang", email="zx.huang@szu.edu.cn", role="aut"),
@@ -26,9 +26,9 @@ Copyright: 2011-2012 Shenzhen Institutes of Advanced Technology Chinese
 LazyLoad: yes
 LazyData: yes
 URL: http://www.siat.ac.cn
-Packaged: 2014-07-31 04:41:39 UTC; simon
+Packaged: 2014-12-26 13:05:31 UTC; simon
 Repository: CRAN
-Date/Publication: 2014-07-31 07:20:27
+Date/Publication: 2014-12-26 14:36:54
 Author: Graham Williams [aut],
   Joshua Z Huang [aut],
   Xiaojun Chen [aut],

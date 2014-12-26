@@ -14,7 +14,6 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-//TODO enable it for R
 #include <R.h>
 
 #include <math.h>
@@ -79,7 +78,6 @@ int update_centers(const double *x, const int *nr, const int *nc, const int *k,
 	}
 
 	for (l = 0; l < *k; l++) {
-		no_cluster[l] = 0;
 		for (j = 0; j < *nc; j++) {
 			centers[j * (*k) + l] = 0.0;
 		}
@@ -132,6 +130,8 @@ void update_featureWeight(const double *x, const int *nr, const int *nc,
 	max = (double*) malloc(*numGroups * sizeof(double));
 
 	for (t = 0; t < *numGroups; t++) {
+		sum[t] = 0;
+		sum2[t] = 0;
 		max[t] = -1.79769e+308;
 	}
 
@@ -272,7 +272,8 @@ double calculate_cost(const double *x, const int *nr, const int *nc,
 void fgkm(const double *x, const int *nr, const int *nc, const int *k,
 		const double *lambda, const double *eta, const int *numGroups,
 		const int *groupInfo, const double *delta, const int *maxiter,
-		const int *maxrestart, int *init, const unsigned int *seed, int *cluster,
+		const int *maxrestart, int *init, // const unsigned int *seed,
+		int *cluster,
 		double *centers, double *featureWeight, double *groupWeight,
 		int *iterations, int *restarts, int *totiter, double *totalCost, //
 		double *totss, //    total sum of squares
@@ -286,8 +287,8 @@ void fgkm(const double *x, const int *nr, const int *nc, const int *k,
 	*iterations = 0;
 	*totiter = 0;
 
-	srand(seed);
-
+	// srand(seed);
+	GetRNGstate();
 	while ((*restarts) < *maxrestart) {
 		if (*init == 0)
 		  init_centers(x, nr, nc, k, centers); // assign randomly
@@ -299,8 +300,6 @@ void fgkm(const double *x, const int *nr, const int *nc, const int *k,
 		dispersion2 = 1.79769e+308;
 
 		while ((*iterations) < *maxiter) {
-			//TODO Enable it for R
-			Rprintf(".");
 			(*iterations)++;
 			(*totiter)++;
 			dispersion1 = dispersion2;
@@ -329,8 +328,6 @@ void fgkm(const double *x, const int *nr, const int *nc, const int *k,
 			//  but if dispersion < 0, then ???
 			if ((fabs((dispersion1 - dispersion2) / dispersion1)) <= (*delta)
 					|| (*iterations) == *maxiter) {
-				//TODO Enable it for R
-				Rprintf("Converged.\n");
 
 				*totalCost = dispersion1;
 
@@ -339,9 +336,11 @@ void fgkm(const double *x, const int *nr, const int *nc, const int *k,
 				 */
 				sum_squares(x, nr, nc, k, cluster, centers, totss, withiness);
 				// Done.
-
+				PutRNGstate();
 				return;
 			}
 		}
 	}
+
+	PutRNGstate();
 }

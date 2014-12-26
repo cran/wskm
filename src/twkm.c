@@ -25,7 +25,6 @@
  *      Author: Xiaojun Chen
  */
 
-//TODO enable it for R
 #include <R.h>
 #include <math.h>
 #include <ctype.h>
@@ -40,7 +39,7 @@ void twkm_init_featureWeight(double *featureWeight, const int *nc,
 		const int *numGroups, const int *groupInfo) {
 
 	int j, *nums;
-	nums = (int *) calloc(numGroups, sizeof(int));
+	nums = (int *) calloc(*numGroups, sizeof(int));
 	for (j = 0; j < *nc; ++j) {
 		nums[groupInfo[j]]++;
 	}
@@ -136,6 +135,8 @@ void twkm_update_featureWeight(const double *x, const int *nr, const int *nc,
 	max = (double*) malloc(*numGroups * sizeof(double));
 
 	for (t = 0; t < *numGroups; t++) {
+		sum[t] = 0;
+		sum2[t] = 0;
 		max[t] = -1.79769e+308;
 	}
 
@@ -247,7 +248,8 @@ double twkm_calculate_cost(const double *x, const int *nr, const int *nc,
 void twkm(const double *x, const int *nr, const int *nc, const int *k,
 		const double *lambda, const double *eta, const int *numGroups,
 		const int *groupInfo, const double *delta, const int *maxiter,
-		const int *maxrestart, int *init, unsigned int *seed, int *cluster,
+		const int *maxrestart, int *init, // unsigned int *seed, 
+		int *cluster,
 		double *centers, double *featureWeight, double *groupWeight,
 		int *iterations, int *restarts, int *totiter, double *totalCost, //
 		double *totss, //    total sum of squares
@@ -261,8 +263,8 @@ void twkm(const double *x, const int *nr, const int *nc, const int *k,
 	*iterations = 0;
 	*totiter = 0;
 
-	srand(seed);
-
+	// srand(seed);
+	GetRNGstate();
 	while ((*restarts) < *maxrestart) {
 		if (*init == 0)
 		  init_centers(x, nr, nc, k, centers); // assign randomly
@@ -274,8 +276,6 @@ void twkm(const double *x, const int *nr, const int *nc, const int *k,
 		dispersion2 = 1.79769e+308;
 
 		while ((*iterations) < *maxiter) {
-			//TODO Enable it for R
-			Rprintf(".");
 			(*iterations)++;
 			(*totiter)++;
 			dispersion1 = dispersion2;
@@ -306,8 +306,6 @@ void twkm(const double *x, const int *nr, const int *nc, const int *k,
 			//  but if dispersion < 0, then ???
 			if ((fabs((dispersion1 - dispersion2) / dispersion1)) <= (*delta)
 					|| (*iterations) == *maxiter) {
-				//TODO Enable it for R
-				Rprintf("Converged.\n");
 
 				*totalCost = dispersion1;
 
@@ -316,10 +314,11 @@ void twkm(const double *x, const int *nr, const int *nc, const int *k,
 				 */
 				sum_squares(x, nr, nc, k, cluster, centers, totss, withiness);
 				// Done.
-
+				PutRNGstate();
 				return;
 			}
 		}
 	}
 
+	PutRNGstate();
 }

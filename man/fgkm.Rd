@@ -7,14 +7,20 @@
   Perform an feature group weighting subspace k-means.
 }
 \usage{
-  fgkm(x, centers, strGroup, lambda, eta, maxiter=100, delta=0.000001,
+  fgkm(x, centers, groups, lambda, eta, maxiter=100, delta=0.000001,
        maxrestart=10,seed=-1)
 }
 \arguments{
   \item{x}{numeric matrix of observations and features.}
   \item{centers}{target number of clusters or the initial centers for
     clustering.}
-  \item{strGroup}{a string give the group information, formatted as "0,1,2,4;3,5;6,7,8" or "0-2,4;3,4,8;6-8", where ";" defines a group}
+  \item{groups}{a string give the group information, formatted as
+    \code{"0,1,2,4;3,5;6,7,8"} or \code{"0-2,4;3,5;6-8"}, where
+    \code{";"} defines a group; or a vector of length of features, each
+    element of the vector indicates the group of the feature. For
+    example, \code{c(1,1,1,2,1,2,3,3,3)} is the same as
+    \code{"0-2,4;3,5;6-8"}, or even
+    \code{c("a","a","a","b","a","b","c","c","c")}.}
   \item{lambda}{parameter of feature weight distribution.}
   \item{eta}{parameter of group weight distribution.}
   \item{delta}{maximum change allowed between iterations for convergence.}
@@ -26,7 +32,8 @@
   obtain fewer than k clusters if we don't allow restarts(i.e.,
   maxrestart=0). If < 0, then there is no limit on the number of
   restarts and we are much likely to get a full set of k clusters.}
-  \item{seed}{random seed. If it was set below 0, then a randomly generated number will be assigned.}
+  \item{seed}{random seed. If it was set below 0, then a randomly
+  generated number will be assigned.}
 }
 \details{
   
@@ -107,9 +114,12 @@ x <- scale(fgkm.sample)
 # Group information is formated as below.
 # Each group is separated by ';'.
 strGroup <- "0-9;10-19;20-49"
+groups <- c(rep(0, 10), rep(1, 10), rep(2, 30))
 
 # Use the fgkm algorithm.
-myfgkm <- fgkm(x, 3, strGroup, 3, 1)
+myfgkm <- fgkm(x, 3, strGroup, 3, 1, seed=19)
+myfgkm2 <- fgkm(x, 3, groups, 3, 1, seed=19)
+all.equal(myfgkm, myfgkm2)
 
 # You can print the clustering result now.
 myfgkm$cluster

@@ -1,4 +1,4 @@
-fgkm <- function(x, centers, strGroup, lambda, eta, maxiter=100, delta=0.000001, maxrestart=10,seed=-1) 
+fgkm <- function(x, centers, groups, lambda, eta, maxiter=100, delta=0.000001, maxrestart=10,seed=-1) 
 {
   if (missing(centers))
     stop("the number or initial clusters 'centers' must be provided")
@@ -25,9 +25,17 @@ fgkm <- function(x, centers, strGroup, lambda, eta, maxiter=100, delta=0.000001,
   }
   
   # get the setting of feature group
-  G <- .C("parseGroup",as.character(strGroup),numGroups=integer(1), groupInfo=integer(nc),PACKAGE="wskm")
-  
- 
+  if (is.character(groups) && length(groups) == 1) {
+    G <- .C("parseGroup",as.character(groups),numGroups=integer(1), groupInfo=integer(nc),PACKAGE="wskm")
+  } else if (is.vector(groups) && length(groups) == nc) {
+    G <- list()
+    grps <- as.factor(groups)
+    groupNames <- levels(grps)
+    G$numGroups <- nlevels(grps)
+    G$groupInfo <- as.integer(as.integer(grps) - 1)
+  }
+
+  set.seed(seed)
   Z <- .C("fgkm",
           x = as.double(as.matrix(x)),
           nr,
@@ -41,7 +49,7 @@ fgkm <- function(x, centers, strGroup, lambda, eta, maxiter=100, delta=0.000001,
           maxIterations = as.integer(maxiter),
           maxRestarts = as.integer(maxrestart),
           as.logical(init),
-          seed,
+#          seed,
           cluster = integer(nr),
           centers=as.double(as.matrix(centers)),
           featureWeight = double(k * nc),
@@ -90,7 +98,7 @@ fgkm <- function(x, centers, strGroup, lambda, eta, maxiter=100, delta=0.000001,
                  size = size,
                  iterations = Z$iterations,
                  restarts = Z$restarts,
-		 totiters=Z$totiters,
+                 totiters=Z$totiters,
                  featureWeight = Z$featureWeight,
                  groupWeight = Z$groupWeight)
   
