@@ -1,5 +1,5 @@
-813f580414e9d574991a218da43d275a *DESCRIPTION
-e974e3abf6048c27ee529325cc3ee2b6 *NAMESPACE
+d15657e862abca4ae92237ed40e177f2 *DESCRIPTION
+1a80783feded1f60e7015ee937096046 *NAMESPACE
 a5390bf8bdf87de6835ff74e075b6efd *R/ewkm.R
 95bfee010604ab0c4bd0103963b7f785 *R/fgkm.R
 ec517d8020db136efe368292b7bf702f *R/levelplot.ewkm.R
@@ -9,13 +9,14 @@ d244260157238a4ea4dca77ad0d596d2 *R/predict.ewkm.R
 cdb1ce94271377c80ac37a828a0410cf *data/datalist
 033a9cd45b1ae968bedd577bd9a2a6cd *data/fgkm.sample.RData
 78ad1b9a40daf7624878e9d57c5792b7 *data/multiplefeatures_remove_pix.RData
-4a7a3413fb06c82e2ac77ed9b7627bee *inst/ChangeLog
-847d92932fb574a34ee7c7970262b391 *man/ewkm.Rd
-57a9783a56d6a36625f0d79afbecd51d *man/fgkm.Rd
+aeeaa92516a7c56ecf789fd86bc80d81 *inst/CITATION
+e61bc2288c106e907b9284482b59eac6 *inst/ChangeLog
+269917c0e511cc0c2171049e0264ec94 *man/ewkm.Rd
+52cb5294a8df2b25922e050a1b4aa1f1 *man/fgkm.Rd
 7b8e3284d53ee072f513b3d7e62b45af *man/fgkm.sample.Rd
 ce732115aa908fdc550c4f9c3547f80f *man/plot.ewkm.Rd
 46948eb71ac3c3fbd680debf82c7a015 *man/predict.ewkm.Rd
-726bb1f3f72c461dc8e8742957e4645b *man/twkm.Rd
+ebca8ca7f5bfc55b82843d3dd5a257ee *man/twkm.Rd
 78a1757b67cc8f3be526884ebc2c6336 *man/twkm.sample.Rd
 e01db953eca193060daa36ed9de22a8b *src/Utils.c
 3838505d471a5ae9eb43a1db9833250d *src/Utils.h
