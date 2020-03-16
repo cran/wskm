@@ -19,7 +19,7 @@
     \code{";"} defines a group; or a vector of length of features, each
     element of the vector indicates the group of the feature. For
     example, \code{c(1,1,1,2,1,2,3,3,3)} is the same as
-    \code{"0-2,4;3,5;6-8"}, or even
+    \code{"0-2,4;3,5;6-8"}, or even\cr
     \code{c("a","a","a","b","a","b","c","c","c")}.}
   \item{lambda}{parameter of feature weight distribution.}
   \item{eta}{parameter of group weight distribution.}
@@ -80,7 +80,7 @@
   of a disappearing cluster resulting from one or more k-means having no
   observations associated with it. An number here greater than zero
   indicates that the algorithm is not converging on a clustering for the
-  given k. It is recommeded that k be reduced.}
+  given k. It is recommended that k be reduced.}
   
   \item{totalIterations}{The total number of iterations over all
   restarts.}
@@ -133,23 +133,20 @@ mytwkm$restarts
 mytwkm$totiters
 mytwkm$totss
 
-# Use a cluster validation method from package 'clv'.
+# Use a cluster validation method from package 'fpc'.
 
 # real.cluster is the real class label of the data 'twkm.sample'.
 real.cluster <- twkm.sample[,410]
 
-# std.ext() returns four values SS, SD, DS, DD.
-std <- std.ext(as.integer(mytwkm$cluster), real.cluster)
+# cluster.stats() computes several distance based statistics.
+kmstats <- cluster.stats(d=dist(x), as.integer(mytwkm$cluster), real.cluster)
 
-# Rand index 
-clv.Rand(std)
+# corrected Rand index
+kmstats$corrected.rand
 
-# Jaccard coefficient
-clv.Jaccard(std)
+# variation of information (VI) index
+kmstats$vi
 }
 
 }
-\keyword{
-  variable weighting
-}
-
+\concept{variable weighting}
