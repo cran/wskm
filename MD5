@@ -1,4 +1,4 @@
-4fae0002d5f74218a0f0dad4ac9c94ce *DESCRIPTION
+e49e014120f792b027e9cd5ab0c17c6d *DESCRIPTION
 be346f2996afa21603fffe935b2d0b0e *NAMESPACE
 0f38aa42d04001370afcc1ac642888e0 *R/ewkm.R
 da34aab7fb8e25c0fe6f95d0f5cc6069 *R/fgkm.R
@@ -19,7 +19,7 @@ ce732115aa908fdc550c4f9c3547f80f *man/plot.ewkm.Rd
 afb7d57ea35a76024ed5a71f1184b12b *man/twkm.Rd
 78a1757b67cc8f3be526884ebc2c6336 *man/twkm.sample.Rd
 534649d0a29ca5767513e72ebfa9b1cb *src/Utils.c
-3838505d471a5ae9eb43a1db9833250d *src/Utils.h
+f8085339d4f993803a42385cdba1e938 *src/Utils.h
 427f476dc9d1599a6cabf4e24ac2bbe8 *src/ewkm.c
 2831f81d41f22b7c0a80dc274b5a10ed *src/fgkm.c
 427b845e4491d0bb8b4d094d2b7fe5d6 *src/twkm.c
