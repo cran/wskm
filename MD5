@@ -1,4 +1,4 @@
-e49e014120f792b027e9cd5ab0c17c6d *DESCRIPTION
+ddcce93360d98a26d1cc2569f95a7aaa *DESCRIPTION
 be346f2996afa21603fffe935b2d0b0e *NAMESPACE
 0f38aa42d04001370afcc1ac642888e0 *R/ewkm.R
 da34aab7fb8e25c0fe6f95d0f5cc6069 *R/fgkm.R
@@ -10,7 +10,7 @@ cdb1ce94271377c80ac37a828a0410cf *data/datalist
 033a9cd45b1ae968bedd577bd9a2a6cd *data/fgkm.sample.RData
 78ad1b9a40daf7624878e9d57c5792b7 *data/multiplefeatures_remove_pix.RData
 23010ed6fdf5db129f4aa9cb524a01ed *inst/CITATION
-e61bc2288c106e907b9284482b59eac6 *inst/ChangeLog
+2813013fe3e8d95b7ed3f23896ba7f8a *inst/ChangeLog
 269917c0e511cc0c2171049e0264ec94 *man/ewkm.Rd
 0e8a96ac2817c5c42cd6fb10d6a9177d *man/fgkm.Rd
 7b8e3284d53ee072f513b3d7e62b45af *man/fgkm.sample.Rd
@@ -20,14 +20,14 @@ afb7d57ea35a76024ed5a71f1184b12b *man/twkm.Rd
 78a1757b67cc8f3be526884ebc2c6336 *man/twkm.sample.Rd
 534649d0a29ca5767513e72ebfa9b1cb *src/Utils.c
 f8085339d4f993803a42385cdba1e938 *src/Utils.h
-427f476dc9d1599a6cabf4e24ac2bbe8 *src/ewkm.c
+55d5e929df4f7e365273ed13d61b7c41 *src/ewkm.c
 2831f81d41f22b7c0a80dc274b5a10ed *src/fgkm.c
 427b845e4491d0bb8b4d094d2b7fe5d6 *src/twkm.c
-98988a2d9f68c8a58bb1f3482f9e74cc *src/wskm.h
+6c1a7d5d7698570229092ede836abbcf *src/wskm.h
 6be0f1ec127a653b1f8b87ecff393e64 *src/wskm_init.c
 997e39c169216b5492425e0fce3e405f *tests/Makefile
 03db39bbf876004c7bb0467f75cb1db9 *tests/ewkm01.R
-52617ad7104e15ad1738a064f0e379cb *tests/ewkm01.Rout.save
+f011ee899ffd20cbbb986ca94fe6fb84 *tests/ewkm01.Rout.save
 66d5b67d8a203ef6c9bbff5ab507af2e *tests/ewkm01.csv
 b2b1b41e3832fad6efff3421c9458d0e *tests/fgkm_test.R
 28b705d98dd9200cd27ba430359006f4 *tests/fgkm_test.Rout.save
